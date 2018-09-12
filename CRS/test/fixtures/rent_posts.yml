@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lens_name: MyString
+  lens_img: MyString
+  mount: MyString
+  zoom_lens: MyString
+  distance: 1
+  aperture: 1
+  is: false
+  location: MyString
+  price: 1
+  rented: false
+  content: MyText
+
+two:
+  lens_name: MyString
+  lens_img: MyString
+  mount: MyString
+  zoom_lens: MyString
+  distance: 1
+  aperture: 1
+  is: false
+  location: MyString
+  price: 1
+  rented: false
+  content: MyText

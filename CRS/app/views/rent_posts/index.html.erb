@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rent Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lens name</th>
+      <th>Lens img</th>
+      <th>Mount</th>
+      <th>Zoom lens</th>
+      <th>Distance</th>
+      <th>Aperture</th>
+      <th>Is</th>
+      <th>Location</th>
+      <th>Price</th>
+      <th>Rented</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rent_posts.each do |rent_post| %>
+      <tr>
+        <td><%= rent_post.lens_name %></td>
+        <td><%= rent_post.lens_img %></td>
+        <td><%= rent_post.mount %></td>
+        <td><%= rent_post.zoom_lens %></td>
+        <td><%= rent_post.distance %></td>
+        <td><%= rent_post.aperture %></td>
+        <td><%= rent_post.is %></td>
+        <td><%= rent_post.location %></td>
+        <td><%= rent_post.price %></td>
+        <td><%= rent_post.rented %></td>
+        <td><%= rent_post.content %></td>
+        <td><%= link_to 'Show', rent_post %></td>
+        <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
+        <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rent Post', new_rent_post_path %>

@@ -1,0 +1,3 @@
+class RentPost < ApplicationRecord
+    
+end

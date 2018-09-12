@@ -1,0 +1,72 @@
+<%= form_with(model: rent_post, local: true) do |form| %>
+  <% if rent_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rent_post.errors.count, "error") %> prohibited this rent_post from being saved:</h2>
+
+      <ul>
+      <% rent_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lens_name %>
+    <%= form.text_field :lens_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lens_img %>
+    <%= form.text_field :lens_img %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mount %>
+    <%= form.text_field :mount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zoom_lens %>
+    <%= form.text_field :zoom_lens %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.number_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aperture %>
+    <%= form.number_field :aperture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is %>
+    <%= form.check_box :is %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rented %>
+    <%= form.check_box :rented %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
