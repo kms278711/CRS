@@ -35,8 +35,11 @@
         <td><%= rent_post.rented %></td>
         <td><%= rent_post.content %></td>
         <td><%= link_to 'Show', rent_post %></td>
-        <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
-        <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <% if rent_post.user == current_user %>
+          <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
+          <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

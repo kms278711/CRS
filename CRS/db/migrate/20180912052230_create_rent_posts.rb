@@ -1,4 +1,5 @@
 class CreateRentPosts < ActiveRecord::Migration[5.2]
+  
   def change
     create_table :rent_posts do |t|
       t.string :lens_name
@@ -12,6 +13,7 @@ class CreateRentPosts < ActiveRecord::Migration[5.2]
       t.integer :price
       t.boolean :rented
       t.text :content
+      t.belongs_to :user
 
       t.timestamps
     end

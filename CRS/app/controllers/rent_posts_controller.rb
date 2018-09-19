@@ -1,4 +1,5 @@
 class RentPostsController < ApplicationController
+  before_action :authenticate_user! 
   before_action :set_rent_post, only: [:show, :edit, :update, :destroy]
 
   # GET /rent_posts
@@ -19,6 +20,7 @@ class RentPostsController < ApplicationController
 
   # GET /rent_posts/1/edit
   def edit
+    check_user
   end
 
   # POST /rent_posts
@@ -54,6 +56,7 @@ class RentPostsController < ApplicationController
   # DELETE /rent_posts/1
   # DELETE /rent_posts/1.json
   def destroy
+    check_user
     @rent_post.destroy
     respond_to do |format|
       format.html { redirect_to rent_posts_url, notice: 'Rent post was successfully destroyed.' }
@@ -69,6 +72,12 @@ class RentPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rent_post_params
-      params.require(:rent_post).permit(:lens_name, :lens_img, :mount, :zoom_lens, :distance, :aperture, :is, :location, :price, :rented, :content)
+      params.require(:rent_post).permit(:lens_name, :lens_img, :mount, :zoom_lens, :distance, :aperture, :is, :location, :price, :rented, :content, :user_id)
     end
+    
+    def check_user
+      if @rent_post.user != current_user
+        redirect_to root_url
+      end
+    end 
 end
