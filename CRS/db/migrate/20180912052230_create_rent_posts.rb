@@ -3,7 +3,7 @@ class CreateRentPosts < ActiveRecord::Migration[5.2]
   def change
     create_table :rent_posts do |t|
       t.string :lens_name
-      t.string :lens_img
+      t.string :image
       t.string :mount
       t.string :zoom_lens
       t.integer :distance

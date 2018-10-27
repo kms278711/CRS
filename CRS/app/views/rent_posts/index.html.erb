@@ -24,7 +24,9 @@
     <% @rent_posts.each do |rent_post| %>
       <tr>
         <td><%= rent_post.lens_name %></td>
-        <td><%= rent_post.lens_img %></td>
+        
+        <td><%= image_tag("#{rent_post.image}") %></td>
+
         <td><%= rent_post.mount %></td>
         <td><%= rent_post.zoom_lens %></td>
         <td><%= rent_post.distance %></td>

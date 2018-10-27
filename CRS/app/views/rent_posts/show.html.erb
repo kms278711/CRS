@@ -6,8 +6,7 @@
 </p>
 
 <p>
-  <strong>Lens img:</strong>
-  <%= @rent_post.lens_img %>
+  <img src="<%=@rent_post.image %>">
 </p>
 
 <p>
@@ -55,5 +54,8 @@
   <%= @rent_post.content %>
 </p>
 
-<%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
+<% if @rent_post.user == current_user %>
+  <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
+<% end %>
+
 <%= link_to 'Back', rent_posts_path %>

@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_041512) do
 
   create_table "rent_posts", force: :cascade do |t|
     t.string "lens_name"
-    t.string "lens_img"
+    t.string "image"
     t.string "mount"
     t.string "zoom_lens"
     t.integer "distance"
