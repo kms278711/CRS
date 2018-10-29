@@ -6,6 +6,15 @@ ruby '2.4.1'
 #로그인
 gem 'devise'
 
+#이미지파일 업로드
+gem 'carrierwave', '~> 1.0'
+
+#이미지 수정
+gem "mini_magick"
+
+#이미지 저장
+gem 'fog-aws'
+
 gem 'rails_db'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

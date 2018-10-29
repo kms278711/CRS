@@ -72,7 +72,7 @@ class RentPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rent_post_params
-      params.require(:rent_post).permit(:lens_name, :lens_img, :mount, :zoom_lens, :distance, :aperture, :is, :location, :price, :rented, :content, :user_id)
+      params.require(:rent_post).permit(:lens_name, :image, :mount, :zoom_lens, :distance, :aperture, :is, :location, :price, :rented, :content, :user_id)
     end
     
     def check_user
