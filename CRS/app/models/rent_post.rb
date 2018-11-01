@@ -12,4 +12,6 @@ class RentPost < ApplicationRecord
         self.save!
     end
     
+    
+        
 end
