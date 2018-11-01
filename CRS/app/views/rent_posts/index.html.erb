@@ -25,7 +25,8 @@
       <tr>
         <td><%= rent_post.lens_name %></td>
         
-        <td><%= image_tag("#{rent_post.image}") %></td>
+        <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
+        <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
 
         <td><%= rent_post.mount %></td>
         <td><%= rent_post.zoom_lens %></td>

@@ -29,7 +29,7 @@ class LensUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_limit:[900, 900]
+  process resize_to_limit:[500, 500]
   version :thumb do
    process resize_to_fit: [100, 100]
    end
