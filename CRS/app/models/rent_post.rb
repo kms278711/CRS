@@ -1,4 +1,5 @@
 class RentPost < ApplicationRecord
+    resourcify
     belongs_to :user
     validates :user, presence: true
     

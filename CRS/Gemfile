@@ -15,6 +15,10 @@ gem "mini_magick"
 #이미지 저장
 gem 'fog-aws'
 
+#권한
+gem 'cancancan'
+gem 'rolify'
+
 gem 'rails_db', '2.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

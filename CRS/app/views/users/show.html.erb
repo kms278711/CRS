@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rent Posts</h1>
+<h1><%= @user.email %>의 Rent Posts</h1>
+<% if can? :follow, @user %>
+  <%= link_to 'Follow', follow_user_path(@user), method: :post %>
+<% end %>
 
+Followees: <%= @user.followees.count %>
+Followers: <%= @user.followers.count %>
 <table>
   <thead>
     <tr>
@@ -41,7 +46,7 @@
         <td><%= rent_post.content %></td>
         <td><%= link_to 'Show', rent_post %></td>
         
-        <% if rent_post.user == current_user %>
+        <% if can? :manage, rent_post %>
           <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
           <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -52,4 +57,6 @@
 
 <br>
 
-<%= link_to 'New Rent Post', new_rent_post_path %>
+<% if can? :update, @user %>
+    <%= link_to 'Edit User', edit_user_registration_path %>
+<% end %>
