@@ -1,7 +1,7 @@
 class RentPostsController < ApplicationController
   before_action :authenticate_user! 
   before_action :set_rent_post, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /rent_posts
   # GET /rent_posts.json
   def index
@@ -20,7 +20,6 @@ class RentPostsController < ApplicationController
 
   # GET /rent_posts/1/edit
   def edit
-    check_user
   end
 
   # POST /rent_posts
@@ -62,6 +61,10 @@ class RentPostsController < ApplicationController
       format.html { redirect_to rent_posts_url, notice: 'Rent post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def mypage
+    @rent_posts = current_user.rent_posts
   end
 
   private

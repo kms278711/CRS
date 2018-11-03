@@ -54,7 +54,7 @@
   <%= @rent_post.content %>
 </p>
 
-<% if @rent_post.user == current_user %>
+<% if can? :update, @rent_post %>
   <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
 <% end %>
 
