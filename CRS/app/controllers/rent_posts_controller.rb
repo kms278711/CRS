@@ -5,7 +5,7 @@ class RentPostsController < ApplicationController
   # GET /rent_posts
   # GET /rent_posts.json
   def index
-    @rent_posts = RentPost.all
+    @rent_posts =RentPost.order("id").page(params[:page]).per(5)
   end
 
   # GET /rent_posts/1

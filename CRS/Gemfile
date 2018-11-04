@@ -19,6 +19,8 @@ gem 'fog-aws'
 gem 'cancancan'
 gem 'rolify'
 
+#페이지수
+gem 'kaminari'
 gem 'rails_db', '2.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
