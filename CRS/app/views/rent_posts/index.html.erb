@@ -5,7 +5,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Rent Posts</h1>
-
+<br>
 <div class="container", align="right">
   <%= link_to 'New Rent Post', new_rent_post_path, :class => "btn btn-default" %>
 	<div class="row">
@@ -41,16 +41,24 @@
               <td><%= rent_post.zoom_lens %></td>
               <td><%= rent_post.distance %></td>
               <td><%= rent_post.aperture %></td>
-              <td><%= rent_post.is %></td>
+              <% if rent_post.is == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
               <td><%= rent_post.location %></td>
               <td><%= rent_post.price %></td>
-              <td><%= rent_post.rented %></td>
+              <% if rent_post.rented == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
               <td><%= rent_post.content %></td>
-              <td><%= link_to '', rent_post, :class => "glyphicon glyphicon-eye-open"  %></td>
-              
+              <td><%= link_to '', rent_post, :class => "glyphicon glyphicon-eye-open " %></td>
+
               <% if rent_post.user == current_user %>
-                <td><%= link_to '', edit_rent_post_path(rent_post), :class => "glyphicon glyphicon-pencil" %></td>
-                <td><%= link_to '', rent_post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash" %></td>
+                <td><%= link_to '', edit_rent_post_path(rent_post), :class => "glyphicon glyphicon-pencil " %></td>
+                <td><%= link_to '', rent_post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash " %></td>
               <% else %>
                 <td></td>
                 <td></td>
@@ -63,6 +71,7 @@
     </div>
   </div>
 </div>
+
 <div align="center">
   <%= paginate @rent_posts %>
 </div>

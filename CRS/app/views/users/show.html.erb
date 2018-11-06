@@ -12,6 +12,7 @@
 Followees: <%= @user.followees.count %>
 Followers: <%= @user.followers.count %>
 </h4>
+<br>
 <div class="container", align="right">
 	<div class="row">
 		<div class="table-responsive">
@@ -46,10 +47,18 @@ Followers: <%= @user.followers.count %>
               <td><%= rent_post.zoom_lens %></td>
               <td><%= rent_post.distance %></td>
               <td><%= rent_post.aperture %></td>
-              <td><%= rent_post.is %></td>
+              <% if rent_post.is == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
               <td><%= rent_post.location %></td>
               <td><%= rent_post.price %></td>
-              <td><%= rent_post.rented %></td>
+              <% if rent_post.rented == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
               <td><%= rent_post.content %></td>
               <td><%= link_to '', rent_post, :class => "glyphicon glyphicon-eye-open"  %></td>
               
@@ -66,6 +75,9 @@ Followers: <%= @user.followers.count %>
       </table>
     </div>
   </div>
+</div>
+<div align="center">
+  <%= paginate @rent_posts %>
 </div>
 <br>
 
