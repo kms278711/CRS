@@ -1,62 +1,87 @@
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.email %>의 Rent Posts</h1>
 <% if can? :follow, @user %>
-  <%= link_to 'Follow', follow_user_path(@user), method: :post %>
+  <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary"%>
 <% end %>
-
+<h4>
 Followees: <%= @user.followees.count %>
 Followers: <%= @user.followers.count %>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Lens name</th>
-      <th>Lens img</th>
-      <th>Mount</th>
-      <th>Zoom lens</th>
-      <th>Distance</th>
-      <th>Aperture</th>
-      <th>Is</th>
-      <th>Location</th>
-      <th>Price</th>
-      <th>Rented</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rent_posts.each do |rent_post| %>
-      <tr>
-        <td><%= link_to rent_post.user.email, rent_post.user %></td>
-        <td><%= rent_post.lens_name %></td>
-        
-        <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
-        <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
-
-        <td><%= rent_post.mount %></td>
-        <td><%= rent_post.zoom_lens %></td>
-        <td><%= rent_post.distance %></td>
-        <td><%= rent_post.aperture %></td>
-        <td><%= rent_post.is %></td>
-        <td><%= rent_post.location %></td>
-        <td><%= rent_post.price %></td>
-        <td><%= rent_post.rented %></td>
-        <td><%= rent_post.content %></td>
-        <td><%= link_to 'Show', rent_post %></td>
-        
-        <% if can? :manage, rent_post %>
-          <td><%= link_to 'Edit', edit_rent_post_path(rent_post) %></td>
-          <td><%= link_to 'Destroy', rent_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+</h4>
+<br>
+<div class="container", align="right">
+	<div class="row">
+		<div class="table-responsive">
+      <table id="main-table" class="table exotic-table">
+        <thead>
+          <tr class = "text-center">
+            <th>User</th>
+            <th>Lens name</th>
+            <th>Lens img</th>
+            <th>Mount</th>
+            <th>Zoom lens</th>
+            <th>Distance</th>
+            <th>Aperture</th>
+            <th>Is</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th>Rented</th>
+            <th>Content</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <% @rent_posts.each do |rent_post| %>
+            <tr>
+              <td><%= link_to rent_post.user.email, rent_post.user %></td>
+              <td><%= rent_post.lens_name %></td>
+              
+              <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
+              <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
+      
+              <td><%= rent_post.mount %></td>
+              <td><%= rent_post.zoom_lens %></td>
+              <td><%= rent_post.distance %></td>
+              <td><%= rent_post.aperture %></td>
+              <% if rent_post.is == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
+              <td><%= rent_post.location %></td>
+              <td><%= rent_post.price %></td>
+              <% if rent_post.rented == true %>
+                <td><span class="glyphicon glyphicon-ok green"></td>
+              <% else %>
+                <td><span class="glyphicon glyphicon-remove red"></td>
+              <% end %>
+              <td><%= rent_post.content %></td>
+              <td><%= link_to '', rent_post, :class => "glyphicon glyphicon-eye-open"  %></td>
+              
+              <% if rent_post.user == current_user %>
+                <td><%= link_to '', edit_rent_post_path(rent_post), :class => "glyphicon glyphicon-pencil" %></td>
+                <td><%= link_to '', rent_post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash" %></td>
+              <% else %>
+                <td></td>
+                <td></td>
+              <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div align="center">
+  <%= paginate @rent_posts %>
+</div>
 <br>
 
+
 <% if can? :update, @user %>
-    <%= link_to 'Edit User', edit_user_registration_path %>
+    <%= link_to 'Edit User', edit_user_registration_path, :class => "btn btn-success" %>
 <% end %>

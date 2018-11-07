@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     load_and_authorize_resource
     # GET 'users/:id'
     def show
-        @rent_posts = @user.rent_posts
+        @rent_posts = @user.rent_posts.order("created_at DESC").page(params[:page]).per(5)
     end
     
     #POST 'users/:id/follow'
