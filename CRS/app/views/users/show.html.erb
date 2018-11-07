@@ -4,7 +4,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.email %>의 Rent Posts</h1>
+<h1><%= @user.email %>의 게시물</h1>
 <% if can? :follow, @user %>
   <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary"%>
 <% end %>
@@ -43,7 +43,7 @@ Followers: <%= @user.followers.count %>
               
               <% if rent_post.user == current_user %>
                 <td><%= link_to '', edit_rent_post_path(rent_post), :class => "glyphicon glyphicon-pencil" %></td>
-                <td><%= link_to '', rent_post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash" %></td>
+                <td><%= link_to '', rent_post, method: :delete, data: { confirm: ' 게시물을 삭제하시겠습니까??' }, :class => "glyphicon glyphicon-trash" %></td>
               <% else %>
                 <td></td>
                 <td></td>
