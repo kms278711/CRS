@@ -2,9 +2,25 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Rent Posts</h1>
+<div class="container">
+	<div class="row">
+	  <div class="search">
+      
+      <%= form_tag rent_posts_path, method: :get do %>
+        <%= text_field_tag :content, params[:content], :class => "form-control input-sm", style: "maxlength=64px;" %>
+        <button type="submit" class="btn btn-primary btn-sm" style="position:absolute; height: 30px; right: 0;top: 5px; border-radius:1px;">Search</button>
+      <% end %> 
+    </div>
+  </div>
+</div>
+
 <br>
 <div class="container", align="right">
   <%= link_to 'New Rent Post', new_rent_post_path, :class => "btn btn-default" %>
@@ -16,15 +32,9 @@
             <th>User</th>
             <th>Lens name</th>
             <th>Lens img</th>
-            <th>Mount</th>
-            <th>Zoom lens</th>
-            <th>Distance</th>
-            <th>Aperture</th>
-            <th>Is</th>
             <th>Location</th>
             <th>Price</th>
             <th>Rented</th>
-            <th>Content</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -36,16 +46,6 @@
               
               <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
               <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
-      
-              <td><%= rent_post.mount %></td>
-              <td><%= rent_post.zoom_lens %></td>
-              <td><%= rent_post.distance %></td>
-              <td><%= rent_post.aperture %></td>
-              <% if rent_post.is == true %>
-                <td><span class="glyphicon glyphicon-ok green"></td>
-              <% else %>
-                <td><span class="glyphicon glyphicon-remove red"></td>
-              <% end %>
               <td><%= rent_post.location %></td>
               <td><%= rent_post.price %></td>
               <% if rent_post.rented == true %>
@@ -53,7 +53,6 @@
               <% else %>
                 <td><span class="glyphicon glyphicon-remove red"></td>
               <% end %>
-              <td><%= rent_post.content %></td>
               <td><%= link_to '', rent_post, :class => "glyphicon glyphicon-eye-open " %></td>
 
               <% if rent_post.user == current_user %>

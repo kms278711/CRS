@@ -4,8 +4,13 @@ class RentPostsController < ApplicationController
   load_and_authorize_resource
   # GET /rent_posts
   # GET /rent_posts.json
+  
   def index
-    @rent_posts =RentPost.order("created_at DESC").page(params[:page]).per(5)
+    if params.has_key?(:content)
+      @rent_posts = RentPost.order("created_at DESC").page(params[:page]).per(5).where('content like ?', "%#{params[:content]}%")
+    else
+      @rent_posts = RentPost.all.order("created_at DESC").page(params[:page]).per(5)
+    end
   end
 
   # GET /rent_posts/1
