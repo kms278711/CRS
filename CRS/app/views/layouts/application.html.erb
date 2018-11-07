@@ -2,22 +2,58 @@
 <html>
   <head>
     
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
     <title>CRS</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+  
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <h1><%= link_to '홈으로 가기', root_path %></h1>
-    <% if user_signed_in? %>
-      <%= link_to current_user.email, current_user %>
-      <%= link_to :로그아웃, destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to :로그인, new_user_session_path %>
+      <!-- Begin Navbar -->
+      <% if user_signed_in? %>
+      <div id="nav">
+        <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100" style = "height : 50px">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                
+                <%= link_to root_path do %>
+                  <%= image_tag "https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png", class: "img-responsive logo"%>
+                <% end %>
+                
+              </div>
+              <div id="navbar" class="collapse navbar-collapse">
+      
+                <ul class="nav navbar-nav navbar-right">
+
+                  <li><% if user_signed_in? %>
+                        <%= link_to current_user.email, current_user %> 
+                  </li>
+                  <li>
+                        <%= link_to :로그아웃, destroy_user_session_path, method: :delete %>
+                      <% else %>
+                        <%= link_to :로그인, new_user_session_path %>
+                      <% end %>
+                  </li>
+                </ul>
+              </div>
+              <!--/.nav-collapse -->
+            </div>
+            <!--/.contatiner -->
+      </div>
+      </div>
     <% end %>
     <%= yield %>
+
   </body>
 </html>
