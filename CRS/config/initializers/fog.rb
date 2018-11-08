@@ -13,4 +13,8 @@
     
      # 이미지를 가진 게시글 삭제 시 AWS S3서버에도 자동 삭제처리
      config.remove_previously_stored_files_after_update = true
+<<<<<<< HEAD
  end
+=======
+ end
+>>>>>>> upstream/master
