@@ -2,7 +2,7 @@ body.img{
 //   padding-top:4.2rem;
 //   padding-bottom:4.2rem;
   background-image: #96723e !important;
-  background-image: url("https://www.pixelstalk.net/wp-content/uploads/images1/Canon-wallpaper-camera-retro-desktop-photography-wallpapers.jpg") !important;
+  background-image: url("https://ciekawe.org/wp-content/uploads/2018/05/fotografia-reklamowa.jpeg") !important;
   background-image: no-repeat !important; 
   background-size: 100% 100% !important;
 
@@ -28,6 +28,8 @@ h1,h2,h3{
  border-radius: 1.1rem;
  outline: 0;
  max-width: 500px;
+ margin-left: 70% !important;
+ margin-top: 60% !important;
 }
 .tx-tfm{
  text-transform:uppercase;
@@ -78,3 +80,6 @@ form .error {
 label>abbr{ display:none};
 div>span {display:block};
 
+.row{
+    margin: 3%;
+}
