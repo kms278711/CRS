@@ -36,8 +36,8 @@
   
     <div class="field">
       <%= form.label :image %>
-      <img src="<%=@rent_post.image %>">
-      <%= form.file_field :image, accept: 'image/png, image/gif, image/jpg' %>
+      <img id="img_prev" src="<%=@rent_post.image %>" >
+      <%= form.file_field :image, accept: 'image/png, image/gif, image/jpg', :onchange => "readURL(this);" %>
     </div>
     
     <div class="field">
