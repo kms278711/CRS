@@ -7,6 +7,14 @@ Rails.application.routes.draw do
     post 'follow', to: 'users#follow', as: :follow, on: :member
   end
   
+  #유저 페이지 user page
   get 'users/:id', to: 'users#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  
+  #렌트댓글 Rent_Comment
+    #Create
+    post '/rent_posts/rent_comments' => 'rent_comments#create'
+    
+    #destroy
+    delete '/rent_posts/rent_comments/:id' => 'rent_comment#destroy' 
+end 

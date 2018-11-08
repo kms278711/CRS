@@ -54,6 +54,18 @@
   <%= @rent_post.content %>
 </p>
 
+
+<form action='rent_comments' method='POST'>
+  <strong>댓글 : </strong>
+  <input type='text', name='input_rent_comment'> </input>
+  <input type='submit'> </input>
+</form>
+
+
+
+
+
+
 <% if can? :update, @rent_post %>
   <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
 <% end %>

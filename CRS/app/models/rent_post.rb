@@ -1,6 +1,7 @@
 class RentPost < ApplicationRecord
     resourcify
     belongs_to :user
+    has_many :rent_comments
     validates :user, presence: true
     
     mount_uploader :image, LensUploader
