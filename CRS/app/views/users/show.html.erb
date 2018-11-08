@@ -6,7 +6,7 @@
 
 <h1><%= @user.email %>의 Rent Posts</h1>
 <% if can? :follow, @user %>
-  <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary"%>
+  <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary" %>
 <% end %>
 <h4>
 Followees: <%= @user.followees.count %>
