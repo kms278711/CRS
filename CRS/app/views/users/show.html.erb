@@ -55,21 +55,13 @@ Followers: <%= @user.followers.count %>
       </table>
     </div>
   </div>
-<% if can? :update, @user %>
-    <%= link_to 'Edit User', edit_user_registration_path, :class => "btn btn-success" %>
-<% end %>
-</div>
-<div align="center">
-  <%= paginate @rent_posts %>
-</div>
-<<<<<<< HEAD
-<br>
-
-=======
-
 <div class="container">
 <% if can? :update, @user %>
     <%= link_to 'Edit User', edit_user_registration_path, :class => "btn btn-success" %>
 <% end %>
 </div>
->>>>>>> upstream/master
+</div>
+<div align="center">
+  <%= paginate @rent_posts %>
+</div>
+
