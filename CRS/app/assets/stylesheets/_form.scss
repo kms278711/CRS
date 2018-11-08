@@ -1,0 +1,42 @@
+
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn { margin-bottom:10px; }
+ 
+
+.badge{background:#f00;padding:5px;color:#fff;}
+
+input[type="number"] {
+  width:70px;
+}
+
+input[type='checkbox']:checked:after {
+    font-family: FontAwesome;
+    content: "\f00C";
+    color: #db3535;
+	 width: 18px;
+    height: 18px;
+}
+input[type='checkbox']:after {
+  
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: -4px;
+    border: 1px solid rgb(192,192,192);
+    border-radius: 0.25em;
+    background: #fff;
+}
+
+textarea {
+    width: 400px;
+    height: 300px;
+}
+
+p, span {
+    font-size: 14px;
+}
+
+input, button { margin-top:10px }
+
