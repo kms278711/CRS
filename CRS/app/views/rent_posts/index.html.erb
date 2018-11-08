@@ -7,6 +7,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <p id="notice"><%= notice %></p>
+<<<<<<< HEAD
 
 <p>
 <div class="container">
@@ -27,6 +28,26 @@
 <br>
 
   
+=======
+
+
+<p>
+
+
+<br>
+<div class="container", align="right">
+  <form style= "font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 300%", align = left>
+  Rent Posts
+</form>
+<br>
+  <%= link_to '새로운 글 작성', new_rent_post_path, :class => "btn btn-default" %>
+  <div class="search">
+      <%= form_tag rent_posts_path, method: :get do %>
+        <%= text_field_tag :content, params[:content], :class => "form-control input-sm", style: "maxlength=64px;", placeholder: "내용을 입력하세요" %>
+        <button type="submit" class="btn btn-primary btn-sm" style="position:absolute; height: 30px; right: 0;top: 5px; border-radius:1px;">검색</button>
+      <% end %> 
+    </div>
+>>>>>>> upstream/master
 	<div class="row">
     </div>
     

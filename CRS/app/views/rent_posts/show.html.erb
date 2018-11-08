@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -72,6 +73,66 @@
 	</div> <!-- row.// -->
 	<hr>
 	<% if can? :update, @rent_post %>
+=======
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lens name:</strong>
+  <%= @rent_post.lens_name %>
+</p>
+
+<p>
+  <strong>Lens img:</strong>
+  <img src="<%=@rent_post.image %>">
+</p>
+
+<p>
+  <strong>Mount:</strong>
+  <%= @rent_post.mount %>
+</p>
+
+<p>
+  <strong>Zoom lens:</strong>
+  <%= @rent_post.zoom_lens %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @rent_post.distance %>
+</p>
+
+<p>
+  <strong>Aperture:</strong>
+  <%= @rent_post.aperture %>
+</p>
+
+<p>
+  <strong>Is:</strong>
+  <%= @rent_post.is %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @rent_post.location %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @rent_post.price %>
+</p>
+
+<p>
+  <strong>Rented:</strong>
+  <%= @rent_post.rented %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @rent_post.content %>
+</p>
+
+<% if can? :update, @rent_post %>
+>>>>>>> upstream/master
   <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
   <% end %>
   

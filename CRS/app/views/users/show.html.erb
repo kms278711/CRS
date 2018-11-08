@@ -6,7 +6,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.email %>의 게시물</h1>
+<div class="container" >
+  <h1><%= @user.email %>의 게시물</h1>
 <% if can? :follow, @user %>
   <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary" %>
 <% end %>
@@ -20,7 +21,6 @@ Followers: <%= @user.followers.count %>
       <table id="main-table" class="table exotic-table">
         <thead>
           <tr class = "text-center">
-
             <th>랜즈 이름</th>
             <th>지역</th>
             <th>가격</th>
@@ -62,5 +62,14 @@ Followers: <%= @user.followers.count %>
 <div align="center">
   <%= paginate @rent_posts %>
 </div>
+<<<<<<< HEAD
 <br>
 
+=======
+
+<div class="container">
+<% if can? :update, @user %>
+    <%= link_to 'Edit User', edit_user_registration_path, :class => "btn btn-success" %>
+<% end %>
+</div>
+>>>>>>> upstream/master
