@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 2018_11_04_042605) do
   create_table "rent_comments", force: :cascade do |t|
     t.string "content"
     t.integer "rent_post_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rent_post_id"], name: "index_rent_comments_on_rent_post_id"
+    t.index ["user_id"], name: "index_rent_comments_on_user_id"
   end
 
   create_table "rent_posts", force: :cascade do |t|

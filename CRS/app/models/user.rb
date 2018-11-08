@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
   has_many :rent_posts
+  has_many :rent_comments
   
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
   has_many :followees, through: :followee_follows, source: :followee

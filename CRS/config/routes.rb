@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   
   #렌트댓글 Rent_Comment
     #Create
-    post '/rent_posts/rent_comments' => 'rent_comments#create'
-    
+    post '/rent_comments' => 'rent_comments#create'
     #destroy
-    delete '/rent_posts/rent_comments/:id' => 'rent_comment#destroy' 
+    delete '/rent_comments/:id' => 'rent_comments#destroy' 
 end 
