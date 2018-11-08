@@ -7,15 +7,18 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <p id="notice"><%= notice %></p>
+<form style= "font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 300%">
+  Rent Posts
+</form>
 
-<h1>Rent Posts</h1>
+<p>
 <div class="container">
 	<div class="row">
 	  <div class="search">
       
       <%= form_tag rent_posts_path, method: :get do %>
         <%= text_field_tag :content, params[:content], :class => "form-control input-sm", style: "maxlength=64px;" %>
-        <button type="submit" class="btn btn-primary btn-sm" style="position:absolute; height: 30px; right: 0;top: 5px; border-radius:1px;">Search</button>
+        <button type="submit" class="btn btn-primary btn-sm" style="position:absolute; height: 30px; right: 0;top: 5px; border-radius:1px;">검색</button>
       <% end %> 
     </div>
   </div>
@@ -23,17 +26,18 @@
 
 <br>
 <div class="container", align="right">
-  <%= link_to 'New Rent Post', new_rent_post_path, :class => "btn btn-default" %>
+  <%= link_to '새로운 글 작성', new_rent_post_path, :class => "btn btn-default" %>
 	<div class="row">
+	  
 		<div class="table-responsive">
       <table id="main-table" class="table exotic-table">
         <thead>
           <tr class = "text-center">
-            <th>User</th>
-            <th>Lens name</th>
-            <th>Lens img</th>
-            <th>Location</th>
-            <th>Price</th>
+            <th>작성자</th>
+            <th>랜즈이름</th>
+            <th>랜즈사진</th>
+            <th>지역</th>
+            <th>가격</th>
             <th>Rented</th>
             <th colspan="3"></th>
           </tr>
@@ -44,10 +48,18 @@
               <td><%= link_to rent_post.user.email, rent_post.user %></td>
               <td><%= rent_post.lens_name %></td>
               
-              <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
-              <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
+              <% if rent_post.image.length == 0%>
+                <td><img src="https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif"></td>
+              <% else %>
+                <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
+                <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
+              <% end %>
               <td><%= rent_post.location %></td>
-              <td><%= rent_post.price %></td>
+              <% if rent_post.price == nil %>
+                <td><%= rent_post.price %></td>
+              <% else %>
+                <td><%= rent_post.price %>원</td>
+              <% end %>   
               <% if rent_post.rented == true %>
                 <td><span class="glyphicon glyphicon-ok green"></td>
               <% else %>
@@ -70,7 +82,7 @@
     </div>
   </div>
 </div>
-
+</p>
 <div align="center">
   <%= paginate @rent_posts %>
 </div>
