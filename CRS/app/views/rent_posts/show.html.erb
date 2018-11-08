@@ -1,3 +1,79 @@
+<<<<<<< HEAD
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+<hr>
+
+	
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap" align = "CENTER">
+  <div> <a href="#"><img src="<%=@rent_post.image %>", width='400'></a></div>
+</div> <!-- slider-product.// -->
+
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3"><%= @rent_post.lens_name %></h3>
+
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency">Price:</span><span class="num"><%= @rent_post.price %>원</span>
+	</span> 
+	<span>/<%= @rent_post.location %></span> 
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Mount:</dt>
+  <dd><p><%= @rent_post.mount %> </p></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Zoom lens:</dt>
+  <dd><%= @rent_post.zoom_lens %></dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Distance:</dt>
+  <dd><%= @rent_post.distance %>mm</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Aperture:</dt>
+  <dd>F / <%= @rent_post.aperture %></dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Is:</dt>
+  <dd><%= @rent_post.is %></dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dd>
+			  	<dl class="param param-feature">
+          <dt>Rented:</dt>
+          <dd><%= @rent_post.rented %></dd>
+        </dl>  <!-- item-property-hor .// -->
+			  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+		<div class="col-sm-7">
+			<dl class="param param-inline">
+				  <dl class="param param-feature">
+            <dt>Content:</dt>
+            <dd><%= @rent_post.content %></dd>
+          </dl>  <!-- item-property-hor .// -->
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<% if can? :update, @rent_post %>
+=======
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -56,7 +132,17 @@
 </p>
 
 <% if can? :update, @rent_post %>
+>>>>>>> upstream/master
   <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
-<% end %>
+  <% end %>
+  
+  <%= link_to 'Back', rent_posts_path %>
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
 
-<%= link_to 'Back', rent_posts_path %>
+
+</div>
+<!--container.//-->
+
