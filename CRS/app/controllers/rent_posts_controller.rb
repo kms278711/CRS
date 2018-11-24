@@ -9,7 +9,7 @@ class RentPostsController < ApplicationController
     if params.has_key?(:content)
       @rent_posts = RentPost.order("created_at DESC").page(params[:page]).per(5).where('content like ?', "%#{params[:content]}%")
     else
-      @rent_posts = RentPost.all.order("created_at DESC").page(params[:page]).per(5)
+      @rent_posts = RentPost.where(rented: false).order("created_at DESC").page(params[:page]).per(5)
     end
   end
 
@@ -18,7 +18,6 @@ class RentPostsController < ApplicationController
   def show
     @token = form_authenticity_token
     @current_user = current_user
-    
   end
 
   # GET /rent_posts/new
