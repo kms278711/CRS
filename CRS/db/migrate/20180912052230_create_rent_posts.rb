@@ -14,7 +14,7 @@ class CreateRentPosts < ActiveRecord::Migration[5.2]
       t.boolean :rented
       t.text :content
       t.belongs_to :user
-
+      
       t.timestamps
     end
   end

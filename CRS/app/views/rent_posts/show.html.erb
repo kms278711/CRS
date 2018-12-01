@@ -13,7 +13,11 @@
 		<aside class="col-sm-5 border-right">
 <article class="gallery-wrap"> 
 <div class="img-big-wrap" align = "CENTER">
-  <div> <a href="#"><img src="<%=@rent_post.image %>", width='400'></a></div>
+	<% @post_attachment.each do |p| %>
+		<% if p.image != nil %>
+		  <div><img src="<%= p.image %>", width='400'></div>
+	  <% end %>
+  <% end %>
 </div> <!-- slider-product.// -->
 
 </article> <!-- gallery-wrap .end// -->

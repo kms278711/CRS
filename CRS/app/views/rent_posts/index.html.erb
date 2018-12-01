@@ -46,12 +46,11 @@
               <tr>
                 <td><%= link_to rent_post.user.email, rent_post.user %></td>
                 <td><%= rent_post.lens_name %></td>
-                
-                <% if rent_post.image.length == 0%>
+                <% if PostAttachment.where(rent_post: rent_post.id)[0].image.length == 0 %>
                   <td><img src="https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif"></td>
                 <% else %>
-                  <td><img src="<%=rent_post.image %>", width = 300, height = 200></td>
-                  <!--<td><%= image_tag("#{rent_post.image}") %></td>-->
+                  <td><img src="<%= PostAttachment.where(rent_post: rent_post.id)[0].image %>", width = 300, height = 200></td>
+                  <!--<td><%#= image_tag("#{@post_attachment[0].image}") %></td>-->
                 <% end %>
                 <td><%= rent_post.location %></td>
                 <% if rent_post.price == nil %>
