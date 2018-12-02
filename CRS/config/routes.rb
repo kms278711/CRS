@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :post_attachments
   devise_for :users, controllers: { registrations: 'users/registrations'}
   resources :rent_posts
   root to: 'rent_posts#index'

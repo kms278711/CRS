@@ -7,17 +7,63 @@
   <p id="notice"><%= notice %></p>
 <hr>
 
+
+
+
 	
 <div class="card">
 	<div class="row">
 		<aside class="col-sm-5 border-right">
 <article class="gallery-wrap"> 
 <div class="img-big-wrap" align = "CENTER">
-  <div> <a href="#"><img src="<%=@rent_post.image %>", width='400'></a></div>
-</div> <!-- slider-product.// -->
 
+<style class="cp-pen-styles">
+.thumbnail_img>img{
+	width:120px;
+	height:80px;
+	border: 4px solid #fff;
+  border-radius: 4px;
+}
+
+.primary {
+  width: 400px;
+  height: 400px;
+  background-size: 350px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+}
+</style>
+
+<div class="primary" style="background-image: url('<%= @post_attachment[0].image %>');"></div>
+<div class="thumbnails">
+    <% @post_attachment.each do |p| %>
+			<% if p.image != nil %>
+        <a class="thumbnail_img" data-big="<%= p.image %>"><img src = "<%= p.image %>"></a>
+      <% end %>
+    <% end %>
+</div>
+
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script >$('.thumbnail_img').on('click', function() {
+  var clicked = $(this);
+  var newSelection = clicked.data('big');
+  var $img = $('.primary').css("background-image","url(" + newSelection + ")");
+  $('.primary').empty().append($img.hide().fadeIn('slow'));
+});
+//# sourceURL=pen.js
+</script>
+
+
+</div> <!-- slider-product.// -->
 </article> <!-- gallery-wrap .end// -->
 		</aside>
+		
+		
+		
+		
+		
 		<aside class="col-sm-7">
 <article class="card-body p-5">
 	<h3 class="title mb-3"><%= @rent_post.lens_name %></h3>

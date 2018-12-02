@@ -8,7 +8,7 @@
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
    
-<%= form_with(model: rent_post, local: true) do |form| %>
+<%= form_with(model: rent_post, local: true, multipart: true) do |form| %>
   <div class="container" >
     <% if rent_post.errors.any? %>
       <div id="error_explanation">
@@ -34,11 +34,13 @@
       </div>
     </div>  
   
-    <div class="field">
-      <%= form.label :image %>
-      <img id="img_prev" src="<%=@rent_post.image %>" >
-      <%= form.file_field :image, accept: 'image/png, image/gif, image/jpg', :onchange => "readURL(this);" %>
-    </div>
+    <%#= form.fields_for :post_attachments do |p| %>
+      <div class="field">
+        <%= form.label :image %>
+        <img id="img_prev" src="<%= @rent_post.image %>" > <!--대표이미지 프리뷰 -->
+        <%= form.file_field :image, accept: 'image/png, image/gif, image/jpg', :multiple => true, :onchange => "readURL(this);", name: "post_attachments[image][]"%>
+      </div>
+    <%# end %>
     
     <div class="field">
       <div class="required-field-block">
