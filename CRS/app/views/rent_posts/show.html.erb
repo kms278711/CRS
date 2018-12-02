@@ -1,62 +1,162 @@
-<p id="notice"><%= notice %></p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
 
-<p>
-  <strong>Lens name:</strong>
-  <%= @rent_post.lens_name %>
-</p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+<hr>
 
-<p>
-  <strong>Lens img:</strong>
-  <img src="<%=@rent_post.image %>">
-</p>
 
-<p>
-  <strong>Mount:</strong>
-  <%= @rent_post.mount %>
-</p>
 
-<p>
-  <strong>Zoom lens:</strong>
-  <%= @rent_post.zoom_lens %>
-</p>
 
-<p>
-  <strong>Distance:</strong>
-  <%= @rent_post.distance %>
-</p>
+	
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap" align = "CENTER">
 
-<p>
-  <strong>Aperture:</strong>
-  <%= @rent_post.aperture %>
-</p>
+<style class="cp-pen-styles">
+.thumbnail_img>img{
+	width:120px;
+	height:80px;
+	border: 4px solid #fff;
+  border-radius: 4px;
+}
 
-<p>
-  <strong>Is:</strong>
-  <%= @rent_post.is %>
-</p>
+.primary {
+  width: 400px;
+  height: 400px;
+  background-size: 350px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+}
+</style>
 
-<p>
-  <strong>Location:</strong>
-  <%= @rent_post.location %>
-</p>
+<div class="primary" style="background-image: url('<%= @post_attachment[0].image %>');"></div>
+<div class="thumbnails">
+    <% @post_attachment.each do |p| %>
+			<% if p.image != nil %>
+        <a class="thumbnail_img" data-big="<%= p.image %>"><img src = "<%= p.image %>"></a>
+      <% end %>
+    <% end %>
+</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @rent_post.price %>
-</p>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script >$('.thumbnail_img').on('click', function() {
+  var clicked = $(this);
+  var newSelection = clicked.data('big');
+  var $img = $('.primary').css("background-image","url(" + newSelection + ")");
+  $('.primary').empty().append($img.hide().fadeIn('slow'));
+});
+//# sourceURL=pen.js
+</script>
 
-<p>
-  <strong>Rented:</strong>
-  <%= @rent_post.rented %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @rent_post.content %>
-</p>
+</div> <!-- slider-product.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		
+		
+		
+		
+		
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3"><%= @rent_post.lens_name %></h3>
 
-<% if can? :update, @rent_post %>
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency">Price:</span><span class="num"><%= @rent_post.price %>원</span>
+	</span> 
+	<span>/<%= @rent_post.location %></span> 
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Mount:</dt>
+  <dd><p><%= @rent_post.mount %> </p></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Zoom lens:</dt>
+  <dd><%= @rent_post.zoom_lens %></dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Distance:</dt>
+  <dd><%= @rent_post.distance %>mm</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Aperture:</dt>
+  <dd>F / <%= @rent_post.aperture %></dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Is:</dt>
+  <dd><%= @rent_post.is %></dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dd>
+			  	<dl class="param param-feature">
+          <dt>Rented:</dt>
+          <dd><%= @rent_post.rented %></dd>
+        </dl>  <!-- item-property-hor .// -->
+			  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+		<div class="col-sm-7">
+			<dl class="param param-inline">
+				  <dl class="param param-feature">
+            <dt>Content:</dt>
+            <dd><%= @rent_post.content %></dd>
+          </dl>  <!-- item-property-hor .// -->
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<% if can? :update, @rent_post %>
   <%= link_to 'Edit', edit_rent_post_path(@rent_post) %> |
-<% end %>
+  <% end %>
+  
+  <%= link_to 'Back', rent_posts_path %>
+  
+  <!--댓글 Rent_Comments-->
+  <hr>
+  
+  <form action = '/rent_comments' method = 'POST'>
+  	<input type = 'hidden' name = 'authenticity_token' value = <%= @token %>></input>
+  	<input type = 'hidden' name = 'rent_post_id' value = <%= @rent_post.id %>></input>
+  	<input type = 'hidden' name = 'current_user' value = <%= @current_user.id%>></input>
+  	
+  	<strong>댓글 : </strong>
+  	<input type = 'text', name='input_content'></input>
+  	<input type = 'submit'></input>
+  </form>
+  
+  <!-- 댓글 출력부분 -->
+  <% @rent_post.rent_comments.each do |comment| %>
+		<p>
+			<%= comment.user.email %>
+			<% if comment.user_id == @rent_post.user_id %>
+				(작성자)
+			<% end %>
+			: <%= comment.content %>
+				<% if comment.user_id == @current_user.id%>
+					<a href='/rent_comments/<%= comment.id %>'
+				  	 data-confirm='댓글을 삭제합니다.'
+				  	 data-method='DELETE'>
+					 | 삭제</a>
+				<% end %>
+		</p>  
+	<% end %>
 
-<%= link_to 'Back', rent_posts_path %>
+
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->

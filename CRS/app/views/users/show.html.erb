@@ -1,20 +1,85 @@
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+<script language="javascript" type='text/javascript'>
+  function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});
+</script>
+
+
+
+<div class="container">
 
 <p id="notice"><%= notice %></p>
 
-<div class="container" >
   <h1><%= @user.email %>의 게시물</h1>
 <% if can? :follow, @user %>
   <%= link_to 'Follow', follow_user_path(@user), method: :post, :class => "btn btn-primary" %>
 <% end %>
 <h4>
-Followees: <%= @user.followees.count %>
-Followers: <%= @user.followers.count %>
+Followees: <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1">
+              <%= @user.followees.count %>
+           </button>
+Followers: <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2">
+              <%= @user.followers.count %>
+           </button>
 </h4>
 <br>
+
 	<div class="row">
+	
+	  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">Followees</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <% @user.followees.each do |followee| %>
+                <li><%= link_to followee.email, "/users/#{followee.id}" %></li>
+              <% end %>              
+            </ul> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>  
+    </div>
+    
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">Followers</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <% @user.followers.each do |follower| %>
+                <li><%= link_to follower.email, "/users/#{follower.id}" %></li>
+              <% end %>              
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>  
+    </div>
+    
 		<div class="table-responsive">
       <table id="main-table" class="table exotic-table">
         <thead>
@@ -53,13 +118,14 @@ Followers: <%= @user.followers.count %>
       </table>
     </div>
   </div>
-</div>
-<div align="center">
-  <%= paginate @rent_posts %>
-</div>
-
 <div class="container">
 <% if can? :update, @user %>
     <%= link_to 'Edit User', edit_user_registration_path, :class => "btn btn-success" %>
 <% end %>
 </div>
+</div>
+
+<div align="center">
+  <%= paginate @rent_posts %>
+</div>
+

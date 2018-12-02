@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_045105) do
+ActiveRecord::Schema.define(version: 2018_12_01_011147) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "followee_id"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 2018_11_01_045105) do
     t.datetime "updated_at", null: false
     t.index ["followee_id"], name: "index_follows_on_followee_id"
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+  create_table "post_attachments", force: :cascade do |t|
+    t.integer "rent_post_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rent_post_id"], name: "index_post_attachments_on_rent_post_id"
+  end
+
+  create_table "rent_comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "rent_post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rent_post_id"], name: "index_rent_comments_on_rent_post_id"
+    t.index ["user_id"], name: "index_rent_comments_on_user_id"
   end
 
   create_table "rent_posts", force: :cascade do |t|
