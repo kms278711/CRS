@@ -37,8 +37,8 @@
     <%#= form.fields_for :post_attachments do |p| %>
       <div class="field">
         <%= form.label :image %>
-        <!--<img id="img_prev" src="<%#=@rent_post.image %>" >-->
-        <%= form.file_field :image, :multiple => true, name: "post_attachments[image][]" %>
+        <img id="img_prev" src="<%= @rent_post.image %>" > <!--대표이미지 프리뷰 -->
+        <%= form.file_field :image, accept: 'image/png, image/gif, image/jpg', :multiple => true, :onchange => "readURL(this);", name: "post_attachments[image][]"%>
       </div>
     <%# end %>
     

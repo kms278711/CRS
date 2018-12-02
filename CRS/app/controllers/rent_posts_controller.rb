@@ -67,8 +67,6 @@ class RentPostsController < ApplicationController
           params[:post_attachments]['image'].each do |a|
             @post_attachment = @rent_post.post_attachments.create!(:image => a, :rent_post_id => @rent_post.id)
           end
-        else
-          @post_attachment = @rent_post.post_attachments.create!(:image => nil, :rent_post_id => @rent_post.id)
         end
         format.html { redirect_to @rent_post, notice: 'Rent post was successfully updated.' }
         format.json { render :show, status: :ok, location: @rent_post }
