@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     post '/rent_comments' => 'rent_comments#create'
     #destroy
     delete '/rent_comments/:id' => 'rent_comments#destroy' 
-    
+
 end 
